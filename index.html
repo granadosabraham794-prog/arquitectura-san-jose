@@ -40,20 +40,43 @@
             }
         }
 
+        /* HEADER MODIFICADO CON LA FOTO 99369.jpg Y EFECTO OSCURECIDO */
         header {
-            background: linear-gradient(135deg, #2c3e50, #16a085);
+            position: relative;
+            background-image: url('99369.jpg');
+            background-size: cover;
+            background-position: center;
             color: white;
             text-align: center;
-            padding: 70px 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            padding: 80px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             animation: fadeInUp 0.8s ease-out;
+            overflow: hidden;
+        }
+
+        /* Capa oscura para el header que garantiza la legibilidad del título */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.65);
+            z-index: 1;
+        }
+
+        /* Contenedor del texto del header por encima del overlay */
+        header .header-content {
+            position: relative;
+            z-index: 2;
         }
 
         header h1 { 
             margin: 0; 
             font-size: 2.8em; 
             font-weight: 800;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
         }
         header p { 
             margin: 12px 0 0; 
@@ -61,6 +84,7 @@
             opacity: 0.95; 
             font-weight: 400;
             color: #f1c40f;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
         }
 
         nav {
@@ -131,15 +155,13 @@
             transform: translateY(-3px);
         }
 
-        /* EFECTO DE FONDO CON IMAGEN Y CAPA OSCURA (OVERLAY) */
         .section-with-bg {
             background-size: cover;
             background-position: center;
             background-attachment: scroll;
-            color: #ffffff; /* Texto claro para contrastar con el fondo */
+            color: #ffffff;
         }
 
-        /* Capa oscura que se estira sobre el fondo para dar legibilidad */
         .section-with-bg::before {
             content: '';
             position: absolute;
@@ -147,17 +169,15 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.72); /* Controla qué tan oscuro se ve el fondo */
+            background: rgba(0, 0, 0, 0.72);
             z-index: 1;
         }
 
-        /* Asegura que el contenido se dibuje por encima de la capa oscura */
         .section-content {
             position: relative;
             z-index: 2;
         }
 
-        /* Asignación de imágenes de fondo */
         .section-vernacula {
             background-image: url('casona vernacula.png');
             border-left: 8px solid var(--accent-vernacula);
@@ -184,7 +204,6 @@
             margin-top: 25px;
         }
 
-        /* TARJETAS CON EFECTO SEMITRANSPARENTE (GLASSMORPHISM) */
         .card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(8px);
@@ -297,15 +316,18 @@
             nav a { padding: 12px 15px; font-size: 0.8em; }
             section { padding: 25px; }
             .card:hover, .gallery-grid img:hover { transform: none; }
-            .section-with-bg { background-attachment: scroll; } /* Suaviza rendimiento móvil */
+            .section-with-bg { background-attachment: scroll; }
         }
     </style>
 </head>
 <body>
 
+    <!-- HEADER ACTUALIZADO -->
     <header>
-        <h1>Arquitectura de San José, Costa Rica</h1>
-        <p>Especialidad de Dibujo y Modelado de Edificaciones</p>
+        <div class="header-content">
+            <h1>Arquitectura de San José, Costa Rica</h1>
+            <p>Especialidad de Dibujo y Modelado de Edificaciones</p>
+        </div>
     </header>
 
     <nav>
@@ -410,4 +432,5 @@
 
 </body>
 </html>
+
 
