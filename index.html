@@ -7,12 +7,12 @@
     <style>
         :root {
             --primary: #1a252f;
-            --accent-vernacula: #d35400;
-            --accent-brutalista: #34495e;
-            --bg: #ebf0f1;
+            --accent-vernacula: #e67e22;
+            --accent-brutalista: #bdc3c7;
+            --bg: #f4f6f7;
             --text: #2c3e50;
             --card-bg: #ffffff;
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Transición más fluida y natural */
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         html {
@@ -29,7 +29,6 @@
             overflow-x: hidden;
         }
 
-        /* ANIMACIÓN DE ENTRADA GENERAL */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -45,14 +44,14 @@
             background: linear-gradient(135deg, #2c3e50, #16a085);
             color: white;
             text-align: center;
-            padding: 60px 20px;
+            padding: 70px 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             animation: fadeInUp 0.8s ease-out;
         }
 
         header h1 { 
             margin: 0; 
-            font-size: 2.6em; 
+            font-size: 2.8em; 
             font-weight: 800;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
@@ -72,7 +71,6 @@
             justify-content: center;
             z-index: 1000;
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            transition: var(--transition);
         }
 
         nav a {
@@ -86,7 +84,6 @@
             transition: var(--transition);
         }
 
-        /* Línea animada debajo de los enlaces del menú */
         nav a::after {
             content: '';
             position: absolute;
@@ -116,46 +113,69 @@
 
         section {
             padding: 40px;
-            margin-bottom: 45px;
-            border-radius: 16px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            margin-bottom: 50px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
             transition: var(--transition);
-            /* Aplica animación al cargar */
             animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Retrasos de animación para un efecto de cascada ordenado */
-        #inicio { animation-delay: 0.1s; }
-        #vernacula { animation-delay: 0.3s; }
-        #brutalista { animation-delay: 0.5s; }
+        #inicio { animation-delay: 0.1s; background: white; border-top: 6px solid #16a085; }
+        #vernacula { animation-delay: 0.2s; }
+        #brutalista { animation-delay: 0.3s; }
 
         section:hover {
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            transform: translateY(-3px);
         }
 
-        #inicio {
-            background: white;
-            border-top: 6px solid #16a085;
+        /* EFECTO DE FONDO CON IMAGEN Y CAPA OSCURA (OVERLAY) */
+        .section-with-bg {
+            background-size: cover;
+            background-position: center;
+            background-attachment: scroll;
+            color: #ffffff; /* Texto claro para contrastar con el fondo */
         }
 
-        .section-vernacula { 
-            background: linear-gradient(145deg, #fdf2e9, #fae5d3);
-            border-left: 8px solid var(--accent-vernacula); 
+        /* Capa oscura que se estira sobre el fondo para dar legibilidad */
+        .section-with-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.72); /* Controla qué tan oscuro se ve el fondo */
+            z-index: 1;
         }
-        
-        .section-brutalista { 
-            background: linear-gradient(145deg, #eaeded, #d5dbdb);
-            border-left: 8px solid var(--accent-brutalista); 
+
+        /* Asegura que el contenido se dibuje por encima de la capa oscura */
+        .section-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Asignación de imágenes de fondo */
+        .section-vernacula {
+            background-image: url('casona vernacula.png');
+            border-left: 8px solid var(--accent-vernacula);
+        }
+
+        .section-brutalista {
+            background-image: url('asamblea brutalista.png');
+            border-left: 8px solid #7f8c8d;
         }
 
         h2 { 
-            font-size: 2em;
+            font-size: 2.2em;
             margin-top: 0; 
             font-weight: 700;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
         }
         .section-vernacula h2 { color: var(--accent-vernacula); }
-        .section-brutalista h2 { color: var(--accent-brutalista); }
+        .section-brutalista h2 { color: #ecf0f1; }
 
         .grid {
             display: grid;
@@ -164,52 +184,57 @@
             margin-top: 25px;
         }
 
+        /* TARJETAS CON EFECTO SEMITRANSPARENTE (GLASSMORPHISM) */
         .card {
-            background: var(--card-bg);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             padding: 22px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
             transition: var(--transition);
-            border: 1px solid rgba(0,0,0,0.02);
+            color: #f8f9fa;
         }
 
-        /* Animación interactiva en las tarjetas */
+        #inicio .card {
+            background: #f8f9fa;
+            color: var(--text);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
         .card:hover {
             transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
         }
 
-        .section-vernacula .card:hover { 
-            border-top: 5px solid var(--accent-vernacula); 
+        #inicio .card:hover {
+            background: #ffffff;
+            box-shadow: 0 12px 22px rgba(0,0,0,0.1);
+            border-top: 4px solid #16a085;
         }
-        .section-brutalista .card:hover { 
-            border-top: 5px solid var(--accent-brutalista); 
-        }
+
+        .section-vernacula .card:hover { border-top: 5px solid var(--accent-vernacula); }
+        .section-brutalista .card:hover { border-top: 5px solid #ecf0f1; }
 
         .card h3 { 
             margin-top: 0; 
-            color: #2c3e50; 
-            font-size: 1.25em;
-            border-bottom: 3px solid #edf2f7;
+            font-size: 1.3em;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
             padding-bottom: 8px;
             transition: var(--transition);
         }
+        
+        #inicio .card h3 { color: #2c3e50; border-bottom-color: #edf2f7; }
+        .section-vernacula .card h3 { color: #f39c12; }
+        .section-brutalista .card h3 { color: #ecf0f1; }
 
         .card:hover h3 {
-            padding-left: 5px; /* Pequeño desplazamiento dinámico del título */
-        }
-        
-        .section-vernacula .card h3 { border-bottom-color: #fad7a0; }
-        .section-brutalista .card h3 { border-bottom-color: #aeb6bf; }
-
-        .card ul {
-            padding-left: 20px;
-            margin: 0;
+            padding-left: 6px;
         }
 
-        .card li {
-            margin-bottom: 6px;
-        }
+        .card ul { padding-left: 20px; margin: 0; }
+        .card li { margin-bottom: 6px; }
 
         .gallery-grid {
             display: grid;
@@ -220,16 +245,16 @@
 
         .gallery-grid img {
             width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
             transition: var(--transition);
             cursor: zoom-in;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* Efecto pop-up dinámico al pasar el cursor sobre las imágenes */
         .gallery-grid img:hover {
             transform: scale(1.06) rotate(1deg);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
             z-index: 10;
         }
 
@@ -239,14 +264,13 @@
             height: 0;
             overflow: hidden;
             margin-top: 25px;
-            border-radius: 12px;
-            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+            border-radius: 14px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
             transition: var(--transition);
         }
 
         .video-container:hover {
             transform: scale(1.01);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
 
         .video-container iframe {
@@ -272,8 +296,8 @@
             header h1 { font-size: 2em; }
             nav a { padding: 12px 15px; font-size: 0.8em; }
             section { padding: 25px; }
-            /* Desactiva transformaciones pesadas en móvil para mejor rendimiento */
             .card:hover, .gallery-grid img:hover { transform: none; }
+            .section-with-bg { background-attachment: scroll; } /* Suaviza rendimiento móvil */
         }
     </style>
 </head>
@@ -294,81 +318,87 @@
 
         <!-- INTRODUCCIÓN -->
         <section id="inicio">
-            <h2>Investigación: Desarrollo Urbano</h2>
-            <p>Esta investigación abarca el desarrollo urbano del casco central de San José a través de dos corrientes arquitectónicas fundamentales y contrastantes: la Arquitectura Vernácula y la Arquitectura Brutalista.</p>
+            <div class="section-content">
+                <h2>Investigación: Desarrollo Urbano</h2>
+                <p>Esta investigación abarca el desarrollo urbano del casco central de San José a través de dos corrientes arquitectónicas fundamentales y contrastantes: la Arquitectura Vernácula y la Arquitectura Brutalista.</p>
+            </div>
         </section>
 
         <!-- SECCIÓN ARQUITECTURA VERNÁCULA -->
-        <section id="vernacula" class="section-vernacula">
-            <h2>1. Arquitectura Vernácula</h2>
-            <p>La arquitectura vernácula en Costa Rica es el tipo de construcción tradicional que se desarrolla usando materiales locales, técnicas heredadas y diseños adaptados al clima y cultura del país. Básicamente, son las construcciones “propias” de cada región, hechas muchas veces por las mismas comunidades y no necesariamente por arquitectos profesionales.</p>
-            
-            <div class="grid">
-                <div class="card">
-                    <h3>Historia en San José</h3>
-                    <p>La historia de la arquitectura vernácula en San José comienza desde los primeros poblados de la ciudad, entre los siglos XVIII y XIX, cuando las viviendas eran construidas por los mismos habitantes usando materiales locales como adobe, bahareque, madera y teja. Estas construcciones estaban pensadas para resistir el clima lluvioso y los terremotos frecuentes del país.</p>
-                </div>
-                <div class="card">
-                    <h3>Características y Materiales</h3>
-                    <p>El <strong>bahareque</strong> es una mezcla de madera, caña y barro utilizada en paredes. El <strong>adobe</strong> consiste en bloques de barro y paja secados al sol. La madera fue muy usada en paredes, pisos y estructuras estructurales. La teja de barro se utilizaba en los techos antiguos, mientras que el zinc se volvió común posteriormente. La piedra se empleaba en bases, y la cal junto con el barro servían para acabados.</p>
-                </div>
-                <div class="card">
-                    <h3>Impulsores e Imágenes</h3>
-                    <p><strong>Arquitectos clave:</strong></p>
-                    <ul>
-                        <li>José María Barrantes Monge (Estudios sobre patrimonio y diseño tradicional).</li>
-                        <li>Andrés Fernández (Conservación de viviendas y técnicas antiguas).</li>
-                    </ul>
-                    <p style="margin-top: 15px;"><strong>Ubicaciones de referencia:</strong> Valle Central de Costa Rica, San José, Limón, Puntarenas y Talamanca.</p>
-                    
-                    <div class="gallery-grid">
-                        <img src="Vernacula 1.png" alt="Obra Vernácula 1">
-                        <img src="Vernacula 2.png" alt="Obra Vernácula 2">
-                        <img src="casona vernacula.png" alt="Casona Vernácula">
+        <section id="vernacula" class="section-with-bg section-vernacula">
+            <div class="section-content">
+                <h2>1. Arquitectura Vernácula</h2>
+                <p>La arquitectura vernácula en Costa Rica es el tipo de construcción tradicional que se desarrolla usando materiales locales, técnicas heredadas y diseños adaptados al clima y cultura del país. Básicamente, son las construcciones “propias” de cada región, hechas muchas veces por las mismas comunidades y no necesariamente por arquitectos profesionales.</p>
+                
+                <div class="grid">
+                    <div class="card">
+                        <h3>Historia en San José</h3>
+                        <p>La historia de la arquitectura vernácula en San José comienza desde los primeros poblados de la ciudad, entre los siglos XVIII y XIX, cuando las viviendas eran construidas por los mismos habitantes usando materiales locales como adobe, bahareque, madera y teja. Estas construcciones estaban pensadas para resistir el clima lluvioso y los terremotos frecuentes del país.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Características y Materiales</h3>
+                        <p>El <strong>bahareque</strong> es una mezcla de madera, caña y barro utilizada en paredes. El <strong>adobe</strong> consiste en bloques de barro y paja secados al sol. La madera fue muy usada en paredes, pisos y estructuras estructurales. La teja de barro se utilizaba en los techos antiguos, mientras que el zinc se volvió común posteriormente. La piedra se empleaba en bases, y la cal junto con el barro servían para acabados.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Impulsores e Imágenes</h3>
+                        <p><strong>Arquitectos clave:</strong></p>
+                        <ul>
+                            <li>José María Barrantes Monge (Estudios sobre patrimonio y diseño tradicional).</li>
+                            <li>Andrés Fernández (Conservación de viviendas y técnicas antiguas).</li>
+                        </ul>
+                        <p style="margin-top: 15px;"><strong>Ubicaciones de referencia:</strong> Valle Central de Costa Rica, San José, Limón, Puntarenas y Talamanca.</p>
+                        
+                        <div class="gallery-grid">
+                            <img src="Vernacula 1.png" alt="Obra Vernácula 1">
+                            <img src="Vernacula 2.png" alt="Obra Vernácula 2">
+                            <img src="casona vernacula.png" alt="Casona Vernácula">
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <h3 style="margin-top: 35px; color: var(--accent-vernacula);">Video Interactivo</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/Zv5IRVMfsT4?si=VMG2yUJu3gZrcHfN" allowfullscreen></iframe>
+                <h3 style="margin-top: 35px; color: #f39c12; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">Video Interactivo</h3>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/Zv5IRVMfsT4?si=VMG2yUJu3gZrcHfN" allowfullscreen></iframe>
+                </div>
             </div>
         </section>
 
         <!-- SECCIÓN ARQUITECTURA BRUTALISTA -->
-        <section id="brutalista" class="section-brutalista">
-            <h2>2. Arquitectura Brutalista</h2>
-            <p>La arquitectura brutalista es un estilo arquitectónico que surgió a mediados del siglo XX y se caracteriza por el uso de formas grandes, pesadas y materiales expuestos, especialmente el concreto u hormigón. Su nombre proviene del término francés <em>béton brut</em>, que significa “concreto crudo”.</p>
+        <section id="brutalista" class="section-with-bg section-brutalista">
+            <div class="section-content">
+                <h2>2. Arquitectura Brutalista</h2>
+                <p>La arquitectura brutalista es un estilo arquitectónico que surgió a mediados del siglo XX y se caracteriza por el uso de formas grandes, pesadas y materiales expuestos, especialmente el concreto u hormigón. Su nombre proviene del término francés <em>béton brut</em>, que significa “concreto crudo”.</p>
 
-            <div class="grid">
-                <div class="card">
-                    <h3>Historia en San José</h3>
-                    <p>La corriente brutalista llegó a los edificios públicos josefinos principalmente entre las décadas de 1960 y 1980, cuando Costa Rica buscaba modernizar su infraestructura y transmitir una imagen de progreso y solidez institucional. Influenciada por tendencias internacionales, comenzó a utilizarse en San José en edificios gubernamentales, instituciones públicas, universidades y bancos.</p>
-                </div>
-                <div class="card">
-                    <h3>Características y Materiales</h3>
-                    <p>Se caracteriza por el uso de formas geométricas, estructuras masivas y apariencia monumental con poca decoración. Destacan las líneas rectas, ventanas repetitivas y materiales expuestos sin recubrimientos. Los componentes más utilizados se centran en el concreto u hormigón expuesto, el acero, el vidrio, el hierro, la piedra y el ladrillo.</p>
-                </div>
-                <div class="card">
-                    <h3>Ubicaciones Clave e Imágenes</h3>
-                    <p><strong>Arquitectos clave:</strong></p>
-                    <ul>
-                        <li>Rafael Ángel García (Edificios modernos públicos).</li>
-                        <li>Jorge Bertheau (Diseños geométricos y funcionales).</li>
-                    </ul>
-                    <p style="margin-top: 15px;"><strong>Obras de referencia:</strong> Banco Central de Costa Rica, Universidad de Costa Rica, Caja Costarricense de Seguro Social y la Asamblea Legislativa.</p>
-                    
-                    <div class="gallery-grid">
-                        <img src="brutalismo.jpg.png" alt="Obra Brutalista 1">
-                        <img src="brutalismo2.jpg.png" alt="Obra Brutalista 2">
-                        <img src="asamblea brutalista.png" alt="Asamblea Brutalista">
+                <div class="grid">
+                    <div class="card">
+                        <h3>Historia en San José</h3>
+                        <p>La corriente brutalista llegó a los edificios públicos josefinos principalmente entre las décadas de 1960 y 1980, cuando Costa Rica buscaba modernizar su infraestructura y transmitir una imagen de progreso y solidez institucional. Influenciada por tendencias internacionales, comenzó a utilizarse en San José en edificios gubernamentales, instituciones públicas, universidades y bancos.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Características y Materiales</h3>
+                        <p>Se caracteriza por el uso de formas geométricas, estructuras masivas y apariencia monumental con poca decoración. Destacan las líneas rectas, ventanas repetitivas y materiales expuestos sin recubrimientos. Los componentes más utilizados se centran en el concreto u hormigón expuesto, el acero, el vidrio, el hierro, la piedra y el ladrillo.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Ubicaciones Clave e Imágenes</h3>
+                        <p><strong>Arquitectos clave:</strong></p>
+                        <ul>
+                            <li>Rafael Ángel García (Edificios modernos públicos).</li>
+                            <li>Jorge Bertheau (Diseños geométricos y funcionales).</li>
+                        </ul>
+                        <p style="margin-top: 15px;"><strong>Obras de referencia:</strong> Banco Central de Costa Rica, Universidad de Costa Rica, Caja Costarricense de Seguro Social y la Asamblea Legislativa.</p>
+                        
+                        <div class="gallery-grid">
+                            <img src="brutalismo.jpg.png" alt="Obra Brutalista 1">
+                            <img src="brutalismo2.jpg.png" alt="Obra Brutalista 2">
+                            <img src="asamblea brutalista.png" alt="Asamblea Brutalista">
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <h3 style="margin-top: 35px; color: var(--accent-brutalista);">Video Interactivo</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/3PuSR86j_pk?si=XH6KpgWgj5nQQ1Mm" allowfullscreen></iframe>
+                <h3 style="margin-top: 35px; color: #ecf0f1; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">Video Interactivo</h3>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/3PuSR86j_pk?si=XH6KpgWgj5nQQ1Mm" allowfullscreen></iframe>
+                </div>
             </div>
         </section>
 
@@ -380,3 +410,4 @@
 
 </body>
 </html>
+
