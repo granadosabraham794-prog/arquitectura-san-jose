@@ -143,6 +143,13 @@
             margin-bottom: 6px;
         }
 
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
         .video-container {
             position: relative;
             padding-bottom: 56.25%;
@@ -193,13 +200,11 @@
 
     <div class="container">
 
-        <!-- INTRODUCCIÓN -->
         <section id="inicio">
             <h2>Investigación: Desarrollo Urbano</h2>
             <p>Esta investigación abarca el desarrollo urbano del casco central de San José a través de dos corrientes arquitectónicas fundamentales y contrastantes: la Arquitectura Vernácula y la Arquitectura Brutalista.</p>
         </section>
 
-        <!-- SECCIÓN ARQUITECTURA VERNÁCULA -->
         <section id="vernacula" class="badge-vernacula">
             <h2>1. Arquitectura Vernácula</h2>
             <p>La arquitectura vernácula en Costa Rica es el tipo de construcción tradicional que se desarrolla usando materiales locales, técnicas heredadas y diseños adaptados al clima y cultura del país. Básicamente, son las construcciones “propias” de cada región, hechas muchas veces por las mismas comunidades y no necesariamente por arquitectos profesionales.</p>
@@ -222,8 +227,7 @@
                     </ul>
                     <p style="margin-top: 15px;"><strong>Ubicaciones de referencia:</strong> Valle Central de Costa Rica, San José, Limón, Puntarenas y Talamanca.</p>
                     
-                    <!-- Imagen de Arquitectura Vernácula -->
-                    <img src="brutalismo.jpg.png" alt="Arquitectura Vernácula" style="width: 100%; border-radius: 8px; margin-top: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                    <img src="https://images.unsplash.com/photo-1590001155093-a3c66ab0c3ff?auto=format&fit=crop&w=600&q=80" alt="Referencia Arquitectura Tradicional Vernácula" style="width: 100%; border-radius: 8px; margin-top: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
                 </div>
             </div>
 
@@ -233,7 +237,6 @@
             </div>
         </section>
 
-        <!-- SECCIÓN ARQUITECTURA BRUTALISTA -->
         <section id="brutalista" class="badge-brutalista">
             <h2>2. Arquitectura Brutalista</h2>
             <p>La arquitectura brutalista es un estilo arquitectónico que surgió a mediados del siglo XX y se caracteriza por el uso de formas grandes, pesadas y materiales expuestos, especialmente el concreto u hormigón. Su nombre proviene del término francés <em>béton brut</em>, que significa “concreto crudo”.</p>
@@ -248,7 +251,7 @@
                     <p>Se caracteriza por el uso de formas geométricas, estructuras masivas y apariencia monumental con poca decoración. Destacan las líneas rectas, ventanas repetitivas y materiales expuestos sin recubrimientos. Los componentes más utilizados se centran en el concreto u hormigón expuesto, el acero, el vidrio, el hierro, la piedra y el ladrillo.</p>
                 </div>
                 <div class="card">
-                    <h3>Ubicaciones Clave</h3>
+                    <h3>Ubicaciones Clave e Imágenes</h3>
                     <p><strong>Arquitectos clave:</strong></p>
                     <ul>
                         <li>Rafael Ángel García (Edificios modernos públicos).</li>
@@ -256,8 +259,10 @@
                     </ul>
                     <p style="margin-top: 15px;"><strong>Obras de referencia:</strong> Banco Central de Costa Rica, Universidad de Costa Rica, Caja Costarricense de Seguro Social y la Asamblea Legislativa.</p>
                     
-                    <!-- Imagen de Arquitectura Brutalista -->
-                    <img src="brutalismo2.jpg.png" alt="Arquitectura Brutalista" style="width: 100%; border-radius: 8px; margin-top: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                    <div class="gallery-grid">
+                        <img src="brutalismo.jpg.png" alt="Obra Brutalista 1" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                        <img src="brutalismo2.jpg.png" alt="Obra Brutalista 2" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                    </div>
                 </div>
             </div>
 
