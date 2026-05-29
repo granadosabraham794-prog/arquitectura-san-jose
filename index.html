@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -144,7 +146,7 @@
             overflow: hidden;
         }
 
-        /* SECCIÓN INICIO CORREGIDA (Ya no es blanca, ahora es azul traslúcida) */
+        /* SECCIÓN INICIO TRASLÚCIDA */
         #inicio { 
             animation-delay: 0.1s; 
             background: rgba(17, 26, 36, 0.6);
@@ -174,7 +176,6 @@
             color: #ffffff;
         }
 
-        /* Capa oscura reforzada para combinar perfectamente con el fondo de la web */
         .section-with-bg::before {
             content: '';
             position: absolute;
@@ -182,7 +183,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(13, 21, 29, 0.78); 
+            background: rgba(13, 21, 29, 0.82); 
             z-index: 1;
         }
 
@@ -210,6 +211,7 @@
         .section-vernacula h2 { color: var(--accent-vernacula); }
         .section-brutalista h2 { color: #ecf0f1; }
 
+        /* GRID CONFIGURADO PARA MOSTRAR TODO EN CAJAS INDEPENDIENTES */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -217,7 +219,7 @@
             margin-top: 25px;
         }
 
-        /* TARJETAS SEMITRANSPARENTES MEJORADAS */
+        /* TARJETAS SEMITRANSPARENTES EXCLUSIVAS */
         .card {
             background: rgba(255, 255, 255, 0.06);
             backdrop-filter: blur(12px);
@@ -227,6 +229,9 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: var(--transition);
             color: #f1f5f9;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
         .card:hover {
@@ -257,26 +262,21 @@
         .card ul { padding-left: 20px; margin: 0; }
         .card li { margin-bottom: 6px; }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 12px;
-            margin-top: 15px;
-        }
-
-        .gallery-grid img {
+        /* DISEÑO DE IMÁGENES DENTRO DE SUS PROPIAS TARJETAS */
+        .card-img {
             width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: auto; /* Empuja la imagen al fondo de la tarjeta de manera ordenada */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.1);
             transition: var(--transition);
-            cursor: zoom-in;
-            border: 1px solid rgba(255,255,255,0.08);
         }
 
-        .gallery-grid img:hover {
-            transform: scale(1.06) rotate(1deg);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
-            z-index: 10;
+        .card:hover .card-img {
+            transform: scale(1.03);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.6);
         }
 
         .video-container {
@@ -317,7 +317,7 @@
             header h1 { font-size: 2em; }
             nav a { padding: 12px 15px; font-size: 0.8em; }
             section { padding: 25px; }
-            .card:hover, .gallery-grid img:hover { transform: none; }
+            .card:hover { transform: none; }
             .section-with-bg { background-attachment: scroll; }
         }
     </style>
@@ -339,7 +339,7 @@
 
     <div class="container">
 
-        <!-- INTRODUCCIÓN CON FONDO INTEGRADO OSCURO -->
+        <!-- INTRODUCCIÓN -->
         <section id="inicio">
             <div class="section-content">
                 <h2>Investigación: Desarrollo Urbano</h2>
@@ -351,7 +351,7 @@
         <section id="vernacula" class="section-with-bg section-vernacula">
             <div class="section-content">
                 <h2>1. Arquitectura Vernácula</h2>
-                <p>La arquitectura vernácula en Costa Rica es el tipo de construcción tradicional que se desarrolla usando materiales locales, técnicas heredadas y designs adaptados al clima y cultura del país. Básicamente, son las construcciones “propias” de cada región, hechas muchas veces por las mismas comunidades y no necesariamente por arquitectos profesionales.</p>
+                <p>La arquitectura vernácula en Costa Rica es el tipo de construcción tradicional que se desarrolla usando materiales locales, técnicas heredadas y diseños adaptados al clima y cultura del país. Básicamente, son las construcciones “propias” de cada región, hechas muchas veces por las mismas comunidades y no necesariamente por arquitectos profesionales.</p>
                 
                 <div class="grid">
                     <div class="card">
@@ -363,19 +363,30 @@
                         <p>El <strong>bahareque</strong> es una mezcla de madera, caña y barro utilizada en paredes. El <strong>adobe</strong> consiste en bloques de barro y paja secados al sol. La madera fue muy usada en paredes, pisos y estructuras estructurales. La teja de barro se utilizaba en los techos antiguos, mientras que el zinc se volvió común posteriormente. La piedra se empleaba en bases, y la cal junto con el barro servían para acabados.</p>
                     </div>
                     <div class="card">
-                        <h3>Impulsores e Imágenes</h3>
+                        <h3>Impulsores y Referencias</h3>
                         <p><strong>Arquitectos clave:</strong></p>
                         <ul>
                             <li>José María Barrantes Monge (Estudios sobre patrimonio y diseño tradicional).</li>
                             <li>Andrés Fernández (Conservación de viviendas y técnicas antiguas).</li>
                         </ul>
                         <p style="margin-top: 15px;"><strong>Ubicaciones de referencia:</strong> Valle Central de Costa Rica, San José, Limón, Puntarenas y Talamanca.</p>
-                        
-                        <div class="gallery-grid">
-                            <img src="Vernacula 1.png" alt="Obra Vernácula 1">
-                            <img src="Vernacula 2.png" alt="Obra Vernácula 2">
-                            <img src="casona vernacula.png" alt="Casona Vernácula">
-                        </div>
+                    </div>
+
+                    <!-- CADA IMAGEN VERNÁCULA AHORA TIENE SU PROPIO COSO (TARJETA) INDEPENDIENTE -->
+                    <div class="card">
+                        <h3>Vivienda Tradicional</h3>
+                        <p>Ejemplo formal del aprovechamiento de ventilación y techos de alta pendiente para el entorno constructivo local.</p>
+                        <img class="card-img" src="Vernacula 1.png" alt="Obra Vernácula 1">
+                    </div>
+                    <div class="card">
+                        <h3>Técnicas Ancestrales</h3>
+                        <p>Estructuras circulares y cónicas adaptadas por completo con cubiertas orgánicas y materiales de la zona.</p>
+                        <img class="card-img" src="Vernacula 2.png" alt="Obra Vernácula 2">
+                    </div>
+                    <div class="card">
+                        <h3>Casona Antigua</h3>
+                        <p>Estructura de bahareque y madera representativa del patrimonio histórico-arquitectónico del Valle Central.</p>
+                        <img class="card-img" src="casona vernacula.png" alt="Casona Vernácula">
                     </div>
                 </div>
 
@@ -402,19 +413,30 @@
                         <p>Se caracteriza por el uso de formas geométricas, estructuras masivas y apariencia monumental con poca decoración. Destacan las líneas rectas, ventanas repetitivas y materiales expuestos sin recubrimientos. Los componentes más utilizados se centran en el concreto u hormigón expuesto, el acero, el vidrio, el hierro, la piedra y el ladrillo.</p>
                     </div>
                     <div class="card">
-                        <h3>Ubicaciones Clave e Imágenes</h3>
+                        <h3>Ubicaciones y Autores</h3>
                         <p><strong>Arquitectos clave:</strong></p>
                         <ul>
                             <li>Rafael Ángel García (Edificios modernos públicos).</li>
                             <li>Jorge Bertheau (Diseños geométricos y funcionales).</li>
                         </ul>
                         <p style="margin-top: 15px;"><strong>Obras de referencia:</strong> Banco Central de Costa Rica, Universidad de Costa Rica, Caja Costarricense de Seguro Social y la Asamblea Legislativa.</p>
-                        
-                        <div class="gallery-grid">
-                            <img src="brutalismo.jpg.png" alt="Obra Brutalista 1">
-                            <img src="brutalismo2.jpg.png" alt="Obra Brutalista 2">
-                            <img src="asamblea brutalista.png" alt="Asamblea Brutalista">
-                        </div>
+                    </div>
+
+                    <!-- CADA IMAGEN BRUTALISTA AHORA TIENE SU PROPIO COSO (TARJETA) INDEPENDIENTE -->
+                    <div class="card">
+                        <h3>Torre de Concreto</h3>
+                        <p>Estructura institucional con un marcado patrón geométrico repetitivo en ventanas y planos limpios de concreto.</p>
+                        <img class="card-img" src="brutalismo.jpg.png" alt="Obra Brutalista 1">
+                    </div>
+                    <div class="card">
+                        <h3>Volúmenes Monumentales</h3>
+                        <p>Edificación que juega con voladizos pesados y líneas dramáticas talladas directamente sobre concreto crudo.</p>
+                        <img class="card-img" src="brutalismo2.jpg.png" alt="Obra Brutalista 2">
+                    </div>
+                    <div class="card">
+                        <h3>Asamblea Legislativa</h3>
+                        <p>El exponente contemporáneo de escala monumental ubicado en el centro de San José, simulando un bloque puro.</p>
+                        <img class="card-img" src="asamblea brutalista.png" alt="Asamblea Brutalista">
                     </div>
                 </div>
 
@@ -433,4 +455,4 @@
 
 </body>
 </html>
-
+.
