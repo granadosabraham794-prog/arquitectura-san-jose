@@ -6,12 +6,12 @@
     <title>Arquitectura en San José: Vernácula y Brutalista</title>
     <style>
         :root {
-            --primary: #1a252f;
+            --primary: #111a24;
             --accent-vernacula: #e67e22;
             --accent-brutalista: #bdc3c7;
-            --bg: #f4f6f7;
-            --text: #2c3e50;
-            --card-bg: #ffffff;
+            --bg: #0d151d; /* Azul oscuro profundo para todo el fondo de la web */
+            --text: #e2e8f0; /* Texto claro general para lectura cómoda */
+            --card-bg: rgba(255, 255, 255, 0.08);
             --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -40,7 +40,7 @@
             }
         }
 
-        /* HEADER CORREGIDO CON EL NOMBRE LARGO DE LA IMAGEN */
+        /* HEADER CON IMAGEN REAL */
         header {
             position: relative;
             background-image: url('49513711861_0c4d938cc2_c-1.jpg');
@@ -49,12 +49,11 @@
             color: white;
             text-align: center;
             padding: 80px 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
             animation: fadeInUp 0.8s ease-out;
             overflow: hidden;
         }
 
-        /* Capa oscura para el header para garantizar la legibilidad del título */
         header::before {
             content: '';
             position: absolute;
@@ -62,11 +61,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.55); /* Ajustado un poco más claro para que resalte más la foto */
+            background: rgba(13, 21, 29, 0.6); /* Overlay mezclado con el azul oscuro */
             z-index: 1;
         }
 
-        /* Contenedor del texto del header por encima del overlay */
         header .header-content {
             position: relative;
             z-index: 2;
@@ -76,7 +74,7 @@
             margin: 0; 
             font-size: 2.8em; 
             font-weight: 800;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
         }
         header p { 
             margin: 12px 0 0; 
@@ -88,13 +86,13 @@
         }
 
         nav {
-            background: #2c3e50;
+            background: #111a24;
             position: sticky;
             top: 0;
             display: flex;
             justify-content: center;
             z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         nav a {
@@ -139,19 +137,33 @@
             padding: 40px;
             margin-bottom: 50px;
             border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
             transition: var(--transition);
             animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) both;
             position: relative;
             overflow: hidden;
         }
 
-        #inicio { animation-delay: 0.1s; background: white; border-top: 6px solid #16a085; }
+        /* SECCIÓN INICIO CORREGIDA (Ya no es blanca, ahora es azul traslúcida) */
+        #inicio { 
+            animation-delay: 0.1s; 
+            background: rgba(17, 26, 36, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 6px solid #16a085; 
+            border-left: 1px solid rgba(255,255,255,0.05);
+            border-right: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        #inicio h2 { color: #16a085; }
+        #inicio p { color: #e2e8f0; }
+
         #vernacula { animation-delay: 0.2s; }
         #brutalista { animation-delay: 0.3s; }
 
         section:hover {
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
             transform: translateY(-3px);
         }
 
@@ -162,6 +174,7 @@
             color: #ffffff;
         }
 
+        /* Capa oscura reforzada para combinar perfectamente con el fondo de la web */
         .section-with-bg::before {
             content: '';
             position: absolute;
@@ -169,7 +182,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.72);
+            background: rgba(13, 21, 29, 0.78); 
             z-index: 1;
         }
 
@@ -192,7 +205,7 @@
             font-size: 2.2em;
             margin-top: 0; 
             font-weight: 700;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
         }
         .section-vernacula h2 { color: var(--accent-vernacula); }
         .section-brutalista h2 { color: #ecf0f1; }
@@ -204,33 +217,23 @@
             margin-top: 25px;
         }
 
+        /* TARJETAS SEMITRANSPARENTES MEJORADAS */
         .card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             padding: 22px;
             border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: var(--transition);
-            color: #f8f9fa;
-        }
-
-        #inicio .card {
-            background: #f8f9fa;
-            color: var(--text);
-            border: 1px solid rgba(0,0,0,0.05);
+            color: #f1f5f9;
         }
 
         .card:hover {
             transform: translateY(-8px) scale(1.02);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-        }
-
-        #inicio .card:hover {
-            background: #ffffff;
-            box-shadow: 0 12px 22px rgba(0,0,0,0.1);
-            border-top: 4px solid #16a085;
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            border-color: rgba(255,255,255,0.2);
         }
 
         .section-vernacula .card:hover { border-top: 5px solid var(--accent-vernacula); }
@@ -239,12 +242,11 @@
         .card h3 { 
             margin-top: 0; 
             font-size: 1.3em;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.15);
             padding-bottom: 8px;
             transition: var(--transition);
         }
         
-        #inicio .card h3 { color: #2c3e50; border-bottom-color: #edf2f7; }
         .section-vernacula .card h3 { color: #f39c12; }
         .section-brutalista .card h3 { color: #ecf0f1; }
 
@@ -265,15 +267,15 @@
         .gallery-grid img {
             width: 100%;
             border-radius: 10px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.5);
             transition: var(--transition);
             cursor: zoom-in;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.08);
         }
 
         .gallery-grid img:hover {
             transform: scale(1.06) rotate(1deg);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
             z-index: 10;
         }
 
@@ -284,7 +286,7 @@
             overflow: hidden;
             margin-top: 25px;
             border-radius: 14px;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.5);
             transition: var(--transition);
         }
 
@@ -304,8 +306,8 @@
         footer {
             text-align: center;
             padding: 30px 20px;
-            background: #2c3e50;
-            color: rgba(255,255,255,0.8);
+            background: #111a24;
+            color: rgba(255,255,255,0.6);
             margin-top: 60px;
             font-size: 0.95em;
             border-top: 4px solid #16a085;
@@ -322,7 +324,6 @@
 </head>
 <body>
 
-    <!-- HEADER ACTUALIZADO CON IMAGEN REAL -->
     <header>
         <div class="header-content">
             <h1>Arquitectura de San José, Costa Rica</h1>
@@ -338,7 +339,7 @@
 
     <div class="container">
 
-        <!-- INTRODUCCIÓN -->
+        <!-- INTRODUCCIÓN CON FONDO INTEGRADO OSCURO -->
         <section id="inicio">
             <div class="section-content">
                 <h2>Investigación: Desarrollo Urbano</h2>
@@ -350,7 +351,7 @@
         <section id="vernacula" class="section-with-bg section-vernacula">
             <div class="section-content">
                 <h2>1. Arquitectura Vernácula</h2>
-                <p>La arquitectura vernácula en Costa Rica es el tipo de construcción tradicional que se desarrolla usando materiales locales, técnicas heredadas y diseños adaptados al clima y cultura del país. Básicamente, son las construcciones “propias” de cada región, hechas muchas veces por las mismas comunidades y no necesariamente por arquitectos profesionales.</p>
+                <p>La arquitectura vernácula en Costa Rica es el tipo de construcción tradicional que se desarrolla usando materiales locales, técnicas heredadas y designs adaptados al clima y cultura del país. Básicamente, son las construcciones “propias” de cada región, hechas muchas veces por las mismas comunidades y no necesariamente por arquitectos profesionales.</p>
                 
                 <div class="grid">
                     <div class="card">
@@ -432,6 +433,4 @@
 
 </body>
 </html>
-
-
 
