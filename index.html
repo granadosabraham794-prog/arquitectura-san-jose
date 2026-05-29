@@ -12,7 +12,7 @@
             --bg: #ebf0f1;
             --text: #2c3e50;
             --card-bg: #ffffff;
-            --transition: all 0.3s ease;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Transición más fluida y natural */
         }
 
         html {
@@ -26,6 +26,19 @@
             padding: 0;
             background-color: var(--bg);
             color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* ANIMACIÓN DE ENTRADA GENERAL */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         header {
@@ -34,6 +47,7 @@
             text-align: center;
             padding: 60px 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            animation: fadeInUp 0.8s ease-out;
         }
 
         header h1 { 
@@ -58,6 +72,7 @@
             justify-content: center;
             z-index: 1000;
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: var(--transition);
         }
 
         nav a {
@@ -67,7 +82,25 @@
             text-transform: uppercase;
             font-size: 0.9em;
             font-weight: bold;
+            position: relative;
             transition: var(--transition);
+        }
+
+        /* Línea animada debajo de los enlaces del menú */
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 4px;
+            background: #f1c40f;
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        nav a:hover::after {
+            width: 100%;
         }
 
         nav a:hover {
@@ -87,10 +120,18 @@
             border-radius: 16px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.06);
             transition: var(--transition);
+            /* Aplica animación al cargar */
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
 
+        /* Retrasos de animación para un efecto de cascada ordenado */
+        #inicio { animation-delay: 0.1s; }
+        #vernacula { animation-delay: 0.3s; }
+        #brutalista { animation-delay: 0.5s; }
+
         section:hover {
-            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
         }
 
         #inicio {
@@ -132,16 +173,17 @@
             border: 1px solid rgba(0,0,0,0.02);
         }
 
+        /* Animación interactiva en las tarjetas */
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 22px rgba(0,0,0,0.1);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
         }
 
         .section-vernacula .card:hover { 
-            border-top: 4px solid var(--accent-vernacula); 
+            border-top: 5px solid var(--accent-vernacula); 
         }
         .section-brutalista .card:hover { 
-            border-top: 4px solid var(--accent-brutalista); 
+            border-top: 5px solid var(--accent-brutalista); 
         }
 
         .card h3 { 
@@ -150,6 +192,11 @@
             font-size: 1.25em;
             border-bottom: 3px solid #edf2f7;
             padding-bottom: 8px;
+            transition: var(--transition);
+        }
+
+        .card:hover h3 {
+            padding-left: 5px; /* Pequeño desplazamiento dinámico del título */
         }
         
         .section-vernacula .card h3 { border-bottom-color: #fad7a0; }
@@ -176,10 +223,14 @@
             border-radius: 8px;
             box-shadow: 0 6px 12px rgba(0,0,0,0.15);
             transition: var(--transition);
+            cursor: zoom-in;
         }
 
+        /* Efecto pop-up dinámico al pasar el cursor sobre las imágenes */
         .gallery-grid img:hover {
-            transform: scale(1.03);
+            transform: scale(1.06) rotate(1deg);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+            z-index: 10;
         }
 
         .video-container {
@@ -190,6 +241,12 @@
             margin-top: 25px;
             border-radius: 12px;
             box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+            transition: var(--transition);
+        }
+
+        .video-container:hover {
+            transform: scale(1.01);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
 
         .video-container iframe {
@@ -215,6 +272,8 @@
             header h1 { font-size: 2em; }
             nav a { padding: 12px 15px; font-size: 0.8em; }
             section { padding: 25px; }
+            /* Desactiva transformaciones pesadas en móvil para mejor rendimiento */
+            .card:hover, .gallery-grid img:hover { transform: none; }
         }
     </style>
 </head>
@@ -242,7 +301,7 @@
         <!-- SECCIÓN ARQUITECTURA VERNÁCULA -->
         <section id="vernacula" class="section-vernacula">
             <h2>1. Arquitectura Vernácula</h2>
-            <p>La arquitectura vernácula en Costa Rica es el tipo de construcción tradicional que se desarrolla usando materiales locales, técnicas heredadas y designs adaptados al clima y cultura del país. Básicamente, son las construcciones “propias” de cada región, hechas muchas veces por las mismas comunidades y no necesariamente por arquitectos profesionales.</p>
+            <p>La arquitectura vernácula en Costa Rica es el tipo de construcción tradicional que se desarrolla usando materiales locales, técnicas heredadas y diseños adaptados al clima y cultura del país. Básicamente, son las construcciones “propias” de cada región, hechas muchas veces por las mismas comunidades y no necesariamente por arquitectos profesionales.</p>
             
             <div class="grid">
                 <div class="card">
