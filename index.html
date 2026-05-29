@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,9 +9,9 @@
             --primary: #111a24;
             --accent-vernacula: #e67e22;
             --accent-brutalista: #bdc3c7;
-            --bg: #0d151d; /* Azul oscuro profundo para todo el fondo de la web */
-            --text: #e2e8f0; /* Texto claro general para lectura cómoda */
-            --card-bg: rgba(255, 255, 255, 0.08);
+            --bg: #0d151d; /* Azul oscuro profundo */
+            --text: #e2e8f0; 
+            --card-bg: rgba(255, 255, 255, 0.06);
             --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -29,6 +27,12 @@
             background-color: var(--bg);
             color: var(--text);
             overflow-x: hidden;
+
+            /* EFECTO PLANO TÉCNICO: Cuadrícula digital sutil integrada al fondo */
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+            background-size: 40px 40px; /* Tamaño de los cuadros de la guía */
         }
 
         @keyframes fadeInUp {
@@ -54,6 +58,7 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.5);
             animation: fadeInUp 0.8s ease-out;
             overflow: hidden;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         header::before {
@@ -63,7 +68,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(13, 21, 29, 0.6); /* Overlay mezclado con el azul oscuro */
+            background: rgba(13, 21, 29, 0.65); 
             z-index: 1;
         }
 
@@ -77,6 +82,7 @@
             font-size: 2.8em; 
             font-weight: 800;
             text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+            letter-spacing: 1px;
         }
         header p { 
             margin: 12px 0 0; 
@@ -85,6 +91,7 @@
             font-weight: 400;
             color: #f1c40f;
             text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+            letter-spacing: 0.5px;
         }
 
         nav {
@@ -95,6 +102,7 @@
             justify-content: center;
             z-index: 1000;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         nav a {
@@ -106,6 +114,7 @@
             font-weight: bold;
             position: relative;
             transition: var(--transition);
+            letter-spacing: 1px;
         }
 
         nav a::after {
@@ -149,7 +158,7 @@
         /* SECCIÓN INICIO TRASLÚCIDA */
         #inicio { 
             animation-delay: 0.1s; 
-            background: rgba(17, 26, 36, 0.6);
+            background: rgba(17, 26, 36, 0.65);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-top: 6px solid #16a085; 
@@ -183,7 +192,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(13, 21, 29, 0.82); 
+            background: rgba(13, 21, 29, 0.84); 
             z-index: 1;
         }
 
@@ -207,11 +216,11 @@
             margin-top: 0; 
             font-weight: 700;
             text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+            letter-spacing: 0.5px;
         }
         .section-vernacula h2 { color: var(--accent-vernacula); }
         .section-brutalista h2 { color: #ecf0f1; }
 
-        /* GRID CONFIGURADO PARA MOSTRAR TODO EN CAJAS INDEPENDIENTES */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -221,12 +230,12 @@
 
         /* TARJETAS SEMITRANSPARENTES EXCLUSIVAS */
         .card {
-            background: rgba(255, 255, 255, 0.06);
+            background: var(--card-bg);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             padding: 22px;
             border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             transition: var(--transition);
             color: #f1f5f9;
             display: flex;
@@ -234,22 +243,31 @@
             justify-content: flex-start;
         }
 
-        .card:hover {
-            transform: translateY(-8px) scale(1.02);
-            background: rgba(255, 255, 255, 0.12);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-            border-color: rgba(255,255,255,0.2);
+        /* EFECTO DE ILUMINACIÓN SUTIL EN LOS BORDES AL PASAR EL MOUSE */
+        .section-vernacula .card:hover { 
+            border-top: 5px solid var(--accent-vernacula);
+            box-shadow: 0 15px 35px rgba(230, 126, 34, 0.15);
+            border-color: rgba(230, 126, 34, 0.3);
+        }
+        .section-brutalista .card:hover { 
+            border-top: 5px solid #ecf0f1;
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
-        .section-vernacula .card:hover { border-top: 5px solid var(--accent-vernacula); }
-        .section-brutalista .card:hover { border-top: 5px solid #ecf0f1; }
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            background: rgba(255, 255, 255, 0.11);
+        }
 
         .card h3 { 
             margin-top: 0; 
-            font-size: 1.3em;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+            font-size: 1.25em;
+            font-weight: 700;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.12);
             padding-bottom: 8px;
             transition: var(--transition);
+            letter-spacing: 0.5px;
         }
         
         .section-vernacula .card h3 { color: #f39c12; }
@@ -268,7 +286,7 @@
             height: 160px;
             object-fit: cover;
             border-radius: 8px;
-            margin-top: auto; /* Empuja la imagen al fondo de la tarjeta de manera ordenada */
+            margin-top: auto; 
             box-shadow: 0 4px 10px rgba(0,0,0,0.4);
             border: 1px solid rgba(255,255,255,0.1);
             transition: var(--transition);
@@ -317,7 +335,7 @@
             header h1 { font-size: 2em; }
             nav a { padding: 12px 15px; font-size: 0.8em; }
             section { padding: 25px; }
-            .card:hover { transform: none; }
+            .card:hover { transform: none; box-shadow: none !important; }
             .section-with-bg { background-attachment: scroll; }
         }
     </style>
@@ -372,7 +390,7 @@
                         <p style="margin-top: 15px;"><strong>Ubicaciones de referencia:</strong> Valle Central de Costa Rica, San José, Limón, Puntarenas y Talamanca.</p>
                     </div>
 
-                    <!-- CADA IMAGEN VERNÁCULA AHORA TIENE SU PROPIO COSO (TARJETA) INDEPENDIENTE -->
+                    <!-- MÓDULOS DE IMÁGENES INDEPENDIENTES -->
                     <div class="card">
                         <h3>Vivienda Tradicional</h3>
                         <p>Ejemplo formal del aprovechamiento de ventilación y techos de alta pendiente para el entorno constructivo local.</p>
@@ -422,7 +440,7 @@
                         <p style="margin-top: 15px;"><strong>Obras de referencia:</strong> Banco Central de Costa Rica, Universidad de Costa Rica, Caja Costarricense de Seguro Social y la Asamblea Legislativa.</p>
                     </div>
 
-                    <!-- CADA IMAGEN BRUTALISTA AHORA TIENE SU PROPIO COSO (TARJETA) INDEPENDIENTE -->
+                    <!-- MÓDULOS DE IMÁGENES INDEPENDIENTES -->
                     <div class="card">
                         <h3>Torre de Concreto</h3>
                         <p>Estructura institucional con un marcado patrón geométrico repetitivo en ventanas y planos limpios de concreto.</p>
@@ -455,4 +473,3 @@
 
 </body>
 </html>
-.
