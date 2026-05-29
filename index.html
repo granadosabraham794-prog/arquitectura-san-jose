@@ -6,10 +6,10 @@
     <title>Arquitectura en San José: Vernácula y Brutalista</title>
     <style>
         :root {
-            --primary: #2c3e50;
-            --accent-vernacula: #e67e22;
-            --accent-brutalista: #7f8c8d;
-            --bg: #f4f6f7;
+            --primary: #1a252f;
+            --accent-vernacula: #d35400; /* Terracota más vivo */
+            --accent-brutalista: #34495e; /* Gris azulado profundo */
+            --bg: #ebf0f1;
             --text: #2c3e50;
             --card-bg: #ffffff;
             --transition: all 0.3s ease;
@@ -29,48 +29,50 @@
         }
 
         header {
-            background: linear-gradient(135deg, #1a252f, #2c3e50);
+            background: linear-gradient(135deg, #2c3e50, #16a085); /* Degradado moderno y llamativo */
             color: white;
             text-align: center;
-            padding: 50px 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            padding: 60px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         header h1 { 
             margin: 0; 
-            font-size: 2.5em; 
+            font-size: 2.6em; 
             font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         header p { 
-            margin: 10px 0 0; 
-            font-size: 1.2em; 
-            opacity: 0.9; 
-            font-weight: 300;
+            margin: 12px 0 0; 
+            font-size: 1.3em; 
+            opacity: 0.95; 
+            font-weight: 400;
+            color: #f1c40f; /* Color oro destacado para la especialidad */
         }
 
         nav {
-            background: #1a252f;
+            background: #2c3e50;
             position: sticky;
             top: 0;
             display: flex;
             justify-content: center;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
 
         nav a {
-            color: rgba(255,255,255,0.8);
-            padding: 16px 20px;
+            color: #fff;
+            padding: 16px 25px;
             text-decoration: none;
             text-transform: uppercase;
-            font-size: 0.85em;
+            font-size: 0.9em;
             font-weight: bold;
             transition: var(--transition);
         }
 
         nav a:hover {
+            background: #16a085;
             color: #fff;
-            background: rgba(255,255,255,0.1);
         }
 
         .container {
@@ -80,27 +82,40 @@
         }
 
         section {
-            background: var(--card-bg);
-            padding: 35px;
-            margin-bottom: 40px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            padding: 40px;
+            margin-bottom: 45px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
             transition: var(--transition);
         }
 
         section:hover {
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
         }
 
-        .badge-vernacula { border-left: 6px solid var(--accent-vernacula); }
-        .badge-brutalista { border-left: 6px solid var(--accent-brutalista); }
+        /* Color de fondo temático para cada sección */
+        #inicio {
+            background: white;
+            border-top: 6px solid #16a085;
+        }
+
+        .section-vernacula { 
+            background: linear-gradient(145deg, #fdf2e9, #fae5d3); /* Fondo cálido terracota */
+            border-left: 8px solid var(--accent-vernacula); 
+        }
+        
+        .section-brutalista { 
+            background: linear-gradient(145deg, #eaeded, #d5dbdb); /* Fondo gris concreto moderno */
+            border-left: 8px solid var(--accent-brutalista); 
+        }
 
         h2 { 
-            font-size: 1.8em;
+            font-size: 2em;
             margin-top: 0; 
+            font-weight: 700;
         }
-        .badge-vernacula h2 { color: var(--accent-vernacula); }
-        .badge-brutalista h2 { color: var(--accent-brutalista); }
+        .section-vernacula h2 { color: var(--accent-vernacula); }
+        .section-brutalista h2 { color: var(--accent-brutalista); }
 
         .grid {
             display: grid;
@@ -110,29 +125,37 @@
         }
 
         .card {
-            background: #fafbfc;
-            border: 1px solid #eef2f5;
-            padding: 20px;
-            border-radius: 10px;
+            background: var(--card-bg);
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
             transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.02);
         }
 
         .card:hover {
-            transform: translateY(-4px);
-            background: #ffffff;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 22px rgba(0,0,0,0.1);
         }
 
-        .badge-vernacula .card:hover { border-top: 3px solid var(--accent-vernacula); }
-        .badge-brutalista .card:hover { border-top: 3px solid var(--accent-brutalista); }
+        /* Detalles de color específicos por tarjeta */
+        .section-vernacula .card:hover { 
+            border-top: 4px solid var(--accent-vernacula); 
+        }
+        .section-brutalista .card:hover { 
+            border-top: 4px solid var(--accent-brutalista); 
+        }
 
         .card h3 { 
             margin-top: 0; 
-            color: var(--primary); 
-            font-size: 1.2em;
-            border-bottom: 2px solid #edf2f7;
+            color: #2c3e50; 
+            font-size: 1.25em;
+            border-bottom: 3px solid #edf2f7;
             padding-bottom: 8px;
         }
+        
+        .section-vernacula .card h3 { border-bottom-color: #fad7a0; }
+        .section-brutalista .card h3 { border-bottom-color: #aeb6bf; }
 
         .card ul {
             padding-left: 20px;
@@ -150,6 +173,17 @@
             margin-top: 15px;
         }
 
+        .gallery-grid img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            transition: var(--transition);
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.03);
+        }
+
         .video-container {
             position: relative;
             padding-bottom: 56.25%;
@@ -157,7 +191,7 @@
             overflow: hidden;
             margin-top: 25px;
             border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
         }
 
         .video-container iframe {
@@ -171,17 +205,18 @@
 
         footer {
             text-align: center;
-            padding: 25px 20px;
-            background: #1a252f;
-            color: rgba(255,255,255,0.7);
-            margin-top: 50px;
-            font-size: 0.9em;
+            padding: 30px 20px;
+            background: #2c3e50;
+            color: rgba(255,255,255,0.8);
+            margin-top: 60px;
+            font-size: 0.95em;
+            border-top: 4px solid #16a085;
         }
 
         @media (max-width: 768px) {
-            header h1 { font-size: 1.8em; }
+            header h1 { font-size: 2em; }
             nav a { padding: 12px 15px; font-size: 0.8em; }
-            section { padding: 20px; }
+            section { padding: 25px; }
         }
     </style>
 </head>
@@ -207,14 +242,14 @@
         </section>
 
         <!-- SECCIÓN ARQUITECTURA VERNÁCULA -->
-        <section id="vernacula" class="badge-vernacula">
+        <section id="vernacula" class="section-vernacula">
             <h2>1. Arquitectura Vernácula</h2>
             <p>La arquitectura vernácula en Costa Rica es el tipo de construcción tradicional que se desarrolla usando materiales locales, técnicas heredadas y diseños adaptados al clima y cultura del país. Básicamente, son las construcciones “propias” de cada región, hechas muchas veces por las mismas comunidades y no necesariamente por arquitectos profesionales.</p>
             
             <div class="grid">
                 <div class="card">
                     <h3>Historia en San José</h3>
-                    <p>La historia de la arquitectura vernácula en San José comienza desde los primeros poblados de la ciudad, entre los siglos XVIII y XIX, cuando las viviendas eran construidas por los mismos habitantes usando materiales locales como adobe, bahareque, madera y teja. Estas construcciones estaban pensadas para resistit el clima lluvioso y los terremotos frecuentes del país.</p>
+                    <p>La historia de la arquitectura vernácula en San José comienza desde los primeros poblados de la ciudad, entre los siglos XVIII y XIX, cuando las viviendas eran construidas por los mismos habitantes usando materiales locales como adobe, bahareque, madera y teja. Estas construcciones estaban pensadas para resistir el clima lluvioso y los terremotos frecuentes del país.</p>
                 </div>
                 <div class="card">
                     <h3>Características y Materiales</h3>
@@ -228,18 +263,17 @@
                         <li>Andrés Fernández (Conservación de viviendas y técnicas antiguas).</li>
                     </ul>
                     <p style="margin-top: 15px;"><strong>Ubicaciones de referencia:</strong> Valle Central de Costa Rica, San José, Limón, Puntarenas y Talamanca.</p>
-                    <!-- SIN IMAGEN AQUÍ -->
                 </div>
             </div>
 
-            <h3 style="margin-top: 30px;">Video Interactivo</h3>
+            <h3 style="margin-top: 35px; color: var(--accent-vernacula);">Video Interactivo</h3>
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/Zv5IRVMfsT4?si=VMG2yUJu3gZrcHfN" allowfullscreen></iframe>
             </div>
         </section>
 
         <!-- SECCIÓN ARQUITECTURA BRUTALISTA -->
-        <section id="brutalista" class="badge-brutalista">
+        <section id="brutalista" class="section-brutalista">
             <h2>2. Arquitectura Brutalista</h2>
             <p>La arquitectura brutalista es un estilo arquitectónico que surgió a mediados del siglo XX y se caracteriza por el uso de formas grandes, pesadas y materiales expuestos, especialmente el concreto u hormigón. Su nombre proviene del término francés <em>béton brut</em>, que significa “concreto crudo”.</p>
 
@@ -261,15 +295,14 @@
                     </ul>
                     <p style="margin-top: 15px;"><strong>Obras de referencia:</strong> Banco Central de Costa Rica, Universidad de Costa Rica, Caja Costarricense de Seguro Social y la Asamblea Legislativa.</p>
                     
-                    <!-- Tus dos imágenes reales organizadas en la misma tarjeta -->
                     <div class="gallery-grid">
-                        <img src="brutalismo.jpg.png" alt="Obra Brutalista 1" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
-                        <img src="brutalismo2.jpg.png" alt="Obra Brutalista 2" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                        <img src="brutalismo.jpg.png" alt="Obra Brutalista 1">
+                        <img src="brutalismo2.jpg.png" alt="Obra Brutalista 2">
                     </div>
                 </div>
             </div>
 
-            <h3 style="margin-top: 30px;">Video Interactivo</h3>
+            <h3 style="margin-top: 35px; color: var(--accent-brutalista);">Video Interactivo</h3>
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/3PuSR86j_pk?si=XH6KpgWgj5nQQ1Mm" allowfullscreen></iframe>
             </div>
