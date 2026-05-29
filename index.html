@@ -40,10 +40,10 @@
             }
         }
 
-        /* HEADER MODIFICADO CON LA FOTO 99369.jpg Y EFECTO OSCURECIDO */
+        /* HEADER CORREGIDO CON EL NOMBRE LARGO DE LA IMAGEN */
         header {
             position: relative;
-            background-image: url('99369.jpg');
+            background-image: url('49513711861_0c4d938cc2_c-1.jpg');
             background-size: cover;
             background-position: center;
             color: white;
@@ -54,7 +54,7 @@
             overflow: hidden;
         }
 
-        /* Capa oscura para el header que garantiza la legibilidad del título */
+        /* Capa oscura para el header para garantizar la legibilidad del título */
         header::before {
             content: '';
             position: absolute;
@@ -62,7 +62,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.65);
+            background: rgba(0, 0, 0, 0.55); /* Ajustado un poco más claro para que resalte más la foto */
             z-index: 1;
         }
 
@@ -322,7 +322,7 @@
 </head>
 <body>
 
-    <!-- HEADER ACTUALIZADO -->
+    <!-- HEADER ACTUALIZADO CON IMAGEN REAL -->
     <header>
         <div class="header-content">
             <h1>Arquitectura de San José, Costa Rica</h1>
@@ -432,5 +432,6 @@
 
 </body>
 </html>
+
 
 
