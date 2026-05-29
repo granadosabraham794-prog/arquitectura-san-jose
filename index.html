@@ -143,6 +143,25 @@
             margin-bottom: 6px;
         }
 
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-top: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
         footer {
             text-align: center;
             padding: 25px 20px;
@@ -174,11 +193,13 @@
 
     <div class="container">
 
+        <!-- INTRODUCCIÓN -->
         <section id="inicio">
             <h2>Investigación: Desarrollo Urbano</h2>
             <p>Esta investigación abarca el desarrollo urbano del casco central de San José a través de dos corrientes arquitectónicas fundamentales y contrastantes: la Arquitectura Vernácula y la Arquitectura Brutalista.</p>
         </section>
 
+        <!-- SECCIÓN ARQUITECTURA VERNÁCULA -->
         <section id="vernacula" class="badge-vernacula">
             <h2>1. Arquitectura Vernácula</h2>
             <p>La arquitectura vernácula en Costa Rica es el tipo de construcción tradicional que se desarrolla usando materiales locales, técnicas heredadas y diseños adaptados al clima y cultura del país. Básicamente, son las construcciones “propias” de cada región, hechas muchas veces por las mismas comunidades y no necesariamente por arquitectos profesionales.</p>
@@ -202,8 +223,15 @@
                     <p style="margin-top: 15px;"><strong>Ubicaciones de referencia:</strong> Valle Central de Costa Rica, San José, Limón, Puntarenas y Talamanca.</p>
                 </div>
             </div>
+
+            <h3 style="margin-top: 30px;">Video Interactivo</h3>
+            <div class="video-container">
+                <!-- Tu video sobre arquitectura vernácula -->
+                <iframe src="https://www.youtube.com/embed/Zv5IRVMfsT4?si=VMG2yUJu3gZrcHfN" allowfullscreen></iframe>
+            </div>
         </section>
 
+        <!-- SECCIÓN ARQUITECTURA BRUTALISTA -->
         <section id="brutalista" class="badge-brutalista">
             <h2>2. Arquitectura Brutalista</h2>
             <p>La arquitectura brutalista es un estilo arquitectónico que surgió a mediados del siglo XX y se caracteriza por el uso de formas grandes, pesadas y materiales expuestos, especialmente el concreto u hormigón. Su nombre proviene del término francés <em>béton brut</em>, que significa “concreto crudo”.</p>
@@ -223,10 +251,15 @@
                     <ul>
                         <li>Rafael Ángel García (Edificios modernos públicos).</li>
                         <li>Jorge Bertheau (Diseños geométricos y funcionales).</li>
-                        <li>José María Barrantes (Vinculado a la academia moderna urbana).</li>
                     </ul>
                     <p style="margin-top: 15px;"><strong>Obras de referencia:</strong> Banco Central de Costa Rica, Universidad de Costa Rica, Caja Costarricense de Seguro Social y la Asamblea Legislativa.</p>
                 </div>
+            </div>
+
+            <h3 style="margin-top: 30px;">Video Interactivo</h3>
+            <div class="video-container">
+                <!-- Tu video sobre arquitectura brutalista -->
+                <iframe src="https://www.youtube.com/embed/3PuSR86j_pk?si=XH6KpgWgj5nQQ1Mm" allowfullscreen></iframe>
             </div>
         </section>
 
